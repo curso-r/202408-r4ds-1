@@ -57,7 +57,7 @@ Fora do horário de aula ou monitoria:
 
 ```{r}
 "slides/" |>
-  fs::dir_ls(glob = "*.html", fail = FALSE) |>
+  fs::dir_ls(glob = "*.pdf", fail = FALSE) |>
   path_to_url() |>
   dplyr::select(Slide = url) |>
   knitr::kable()
@@ -67,17 +67,18 @@ Fora do horário de aula ou monitoria:
 ## Scripts utilizados em aula
 
 ```{r}
-"exemplos_de_aula/" |>
+"scripts/" |>
   fs::dir_ls(fail = FALSE) |>
   path_to_url() |>
   dplyr::select(Exemplo = url) |>
   knitr::kable()
 ```
+
 ## Práticas
 
 ```{r}
-"praticas/" |>
-  fs::dir_ls(fail = FALSE) |>
+"pratica/" |>
+  fs::dir_ls(glob = "*.R", fail = FALSE) |>
   path_to_url() |>
   dplyr::select(Exemplo = url) |>
   knitr::kable()
@@ -94,23 +95,6 @@ Fora do horário de aula ou monitoria:
 ```
 
 
-## Material extra
-
-Referências extras relacionadas com o conteúdos das aulas, ou materiais que
-comentamos quando tiramos dúvidas (não necessariamente são relacionadas com o
-conteúdo da aula).
-
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-arquivo_csv_materiais <- "extras.csv"
-if (file.exists(arquivo_csv_materiais)) {
-  arquivo_csv_materiais |>
-    readr::read_csv2(show_col_types = FALSE) |>
-    knitr::kable()
-} else {
-  cat("Em breve!")
-}
-```
 
 ## Redes sociais da Curso-R
 
